@@ -1,6 +1,12 @@
 $(function () {
 
- 
+ $('.menu__btn').on('click', function () {
+   $('.menu__list').toggleClass('menu__list--active');
+ });
+
+ $('.shop__filter-btn').on('click', function (){
+   $('.shop__filters').slideToggle()
+ });
 
   $('.blog-page__slider').slick({
     prevArrow: '<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="7pt" height="14pt" viewBox="0 0 7 14" version="1.1"><g><path d="M 6.132812 7.464844 L 2.414062 11.183594 C 2.15625 11.441406 1.742188 11.441406 1.488281 11.183594 L 0.871094 10.566406 C 0.613281 10.308594 0.613281 9.894531 0.871094 9.640625 L 3.503906 7.003906 L 0.871094 4.367188 C 0.613281 4.109375 0.613281 3.695312 0.871094 3.441406 L 1.484375 2.816406 C 1.742188 2.558594 2.15625 2.558594 2.410156 2.816406 L 6.128906 6.535156 C 6.390625 6.792969 6.390625 7.207031 6.132812 7.464844 Z M 6.132812 7.464844 "/></g></svg></button>',
@@ -29,7 +35,15 @@ $(function () {
     asNavFor: '.product-slide__thumb',
     draggable: false,
     arrows: false,
-    fade: true
+    fade: true,
+    responsive: [
+      {
+        breakpoint: 1051,
+        settings: {
+          draggable: true,
+        }
+      },
+    ]
   });
 
   $('.shop-content__filter-btn').on('click', function () {
@@ -39,10 +53,12 @@ $(function () {
 
   $('.button-list').on('click', function () {
     $('.product-item').addClass('product-item--list');
+    $('.shop-content__inner').addClass('shop-content__nogrid');
   });
 
     $('.button-grid').on('click', function () {
     $('.product-item').removeClass('product-item--list');
+    $('.shop-content__inner').removeClass('shop-content__nogrid');
   });
 
   $('.select-style, .product-one__item-num').styler()
